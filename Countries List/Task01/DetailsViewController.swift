@@ -1,5 +1,6 @@
 import UIKit
 
+//Display details of selected countries
 class DetailsViewController: UIViewController {
     var countries: [String] = []
 

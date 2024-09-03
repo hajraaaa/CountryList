@@ -22,8 +22,9 @@ class SelectedCountriesViewController: UIViewController, UITableViewDelegate, UI
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Dequeue a reusable cell with the identifier "CountryCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath)
-        let country = selectedCountries[indexPath.row]
+        let country = selectedCountries[indexPath.row] // Get the country for the current row
         cell.textLabel?.text = country.name
         return cell
     }

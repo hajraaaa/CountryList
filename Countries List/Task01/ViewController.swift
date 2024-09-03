@@ -26,12 +26,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         nextButton.isHidden = true
         
         clearButton.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
-            markAllButton.addTarget(self, action: #selector(markAllButtonTapped), for: .touchUpInside)
+        markAllButton.addTarget(self, action: #selector(markAllButtonTapped), for: .touchUpInside)
         
-    }
+}
     
-
-
     @objc func clearButtonTapped(_ sender: UIButton) {
         // Save the original configuration
         guard let originalConfiguration = clearButton.configuration else { return }
@@ -72,9 +70,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
 
-    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return isSearching ? 1 : alphabets.count
+        return isSearching ? 1 : alphabets.count // If searching, show a single section; otherwise, show sections for each alphabet
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -93,13 +90,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let country: Country
         if isSearching {
-            country = filteredCountries[indexPath.row]
+            country = filteredCountries[indexPath.row] // Get the country from the filtered list during search
         } else {
             let letter = alphabets[indexPath.section]
             let countries = groupedCountries[String(letter)] ?? []
             country = countries[indexPath.row]
         }
         
+        // Configure the cell with country data and its checked state
         cell.configure(with: country, checked: selectedCountries.contains(where: { $0.name == country.name }))
         cell.checkbox.addTarget(self, action: #selector(checkboxTapped(_:)), for: .touchUpInside)
         cell.checkbox.tag = indexPath.row
@@ -126,10 +124,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
         
+        // Toggle the selection state of the country
         if let index = selectedCountries.firstIndex(where: { $0.name == country.name }) {
-            selectedCountries.remove(at: index)
+            selectedCountries.remove(at: index) // Remove the country if it's already selected
         } else {
-            selectedCountries.append(country)
+            selectedCountries.append(country) // Add the country if it's not selected
         }
         
         nextButton.isHidden = selectedCountries.isEmpty
@@ -148,10 +147,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    // Prepare for segue to the next screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSelectedCountries" {
             if let destinationVC = segue.destination as? SelectedCountriesViewController {
-                destinationVC.selectedCountries = selectedCountries
+                destinationVC.selectedCountries = selectedCountries // Pass the selected countries to the next view controller
             }
         }
     }

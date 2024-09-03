@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  Task01
-//
-//  Created by RAI on 26/08/2024.
-//
-
 import UIKit
 
 @main
