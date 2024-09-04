@@ -36,17 +36,3 @@ This iOS application displays a list of countries alphabetically and allows user
 
 4. **Run the Project**
    - Press `Cmd + R` to run the app on the selected device or simulator.
-
-### How It Works
-
-- **Alphabetical Listing**: The app displays countries grouped alphabetically in a UITableView. Each section represents a letter, and the countries under each section start with that letter.
-  
-- **Country Selection**: Users can select countries by tapping the checkbox next to the country name. When a country is selected, it is added to the `selectedCountries` array, and the "Show Selected Countries" button appears.
-
-- **Show Selected Countries**: When the "Show Selected Countries" button is clicked, the app navigates to a new screen that displays the list of selected countries.
-
-- **Search Bar**: Users can type in the search bar to filter the list of countries. The app dynamically updates the list based on the search input.
-
-- **Clear Button**: The "Clear" button deselects all selected countries, hiding the "Show Selected Countries" button and refreshing the UITableView.
-
-- **Mark All Button**: The "Mark All" button selects all the countries displayed in the list. If any countries are selected, the "Show Selected Countries" button is shown.
